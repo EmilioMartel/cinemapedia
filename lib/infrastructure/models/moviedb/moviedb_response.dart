@@ -24,6 +24,7 @@ class MovieDbResponse {
     );
 
     Map<String, dynamic> toJson() => {
+        // ignore: prefer_null_aware_operators
         "dates": dates == null ? null : dates!.toJson(),
         "page": page,
         "results": List<dynamic>.from(results.map((x) => x.toJson())),

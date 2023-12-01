@@ -1,3 +1,4 @@
+import 'package:cinemapedia/config/helpers/human_dates.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cinemapedia/presentation/providers/providers.dart';
@@ -36,6 +37,9 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    int day = now.day;
+    String dayOfWeek = HumanDates.getDayOfWeek(now.weekday);
 
     final nowPlayingMovies = ref.watch( nowPlayingMoviesProvider );
     final slidesShowMovies = ref.watch( moviesSlideshowProvider );
@@ -49,7 +53,7 @@ class _HomeViewState extends ConsumerState<_HomeView> {
         MovieHorizontalListview(
           movies: nowPlayingMovies,
           title: 'Cines',
-          subTitle: 'Lunes 20',
+          subTitle: '$dayOfWeek $day',
         ),
       ],
     );
